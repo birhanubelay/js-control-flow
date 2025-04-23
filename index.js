@@ -135,11 +135,18 @@ users(["Birhane","Selam","Hadgu","Selamawit"]);
 function checkScore(studentsScore){
     studentsScore.forEach(student=>{
         let score=student.score;
-        do{
-            console.log(`Hello ${student.name}, You got ${score}. You need to retake the test.`);
-            score=score+10;
-        }
-        while (score<50);
+        let attempt=1;
+        if(score > 50){
+            console.log(`Hello ${student.name}, You have passed in the first attempt.`)
+        }else{
+            do{
+                console.log(`Hello ${student.name}, You got ${score} in attempt ${attempt}. You need to retake the test`);
+                score=score+10;
+                attempt++;
+            }
+            while (score<50);
+            console.log(`Congratuations ${student.name}, You got ${score} after ${attempt} attempts.`);
+        }  
     });
 };
 studentsScore=[{"name":"Selam","score":5},{"name":"Helen","score":4},{"name":"Fiona","score":60},{"name":"Meron","score":7},{"name":"Birhanu","score":3}];
